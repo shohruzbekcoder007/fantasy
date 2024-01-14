@@ -15,6 +15,7 @@ const scheduledTask = schedule.scheduleJob('*/1 * * * *', () => {
   });
 
 
+
 let server = app.listen(8080, err => {
     if(err)
         console.error(err);
