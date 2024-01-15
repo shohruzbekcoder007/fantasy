@@ -2,18 +2,17 @@ const express = require('express')
 const app = express()
 
 require('./startup/logging')()
-require('./startup/process_error')()
 require('./startup/db')()
 require('./startup/router')(app)
+require('./startup/process_error')()
 
 const schedule = require('node-schedule');
 
 var rule = new schedule.RecurrenceRule();
 
-const scheduledTask = schedule.scheduleJob('*/1 * * * *', () => {
-    console.log('Task executed every minute:', new Date().toLocaleTimeString());
-  });
-
+// const scheduledTask = schedule.scheduleJob('*/1 * * * *', () => {
+//     console.log('Task executed every minute:', new Date().toLocaleTimeString());
+//   });
 
 
 let server = app.listen(8080, err => {
